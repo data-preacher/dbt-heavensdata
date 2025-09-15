@@ -6,16 +6,24 @@ models:
           - unique
           - not_null
 
-  
   - name: stg_jaffle_shop__orders
     columns:
       - name: order_id
         data_tests:
           - unique
           - not_null
-
-      # - name: status
-      #   data_tests:
-      #     - accepted_values:
-      #         arguments:
-      #           values: ['completed', 'placed', 'shipped', 'return_pending', 'returned']
+      - name: customer_id
+        data_tests:
+          - not_null
+      - name: order_date
+        data_tests:
+          - not_null
+      - name: status
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['completed', 'placed', 'shipped', 'return_pending', 'returned']
+      - name: _etl_loaded_at
+        data_tests:
+          - not_null
