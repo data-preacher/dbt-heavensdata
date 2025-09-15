@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    database: dbt-tutorial
+    schema: jaffle_shop
+    description: A clone of the jaffle_shop data at the BQ
+    tables:
+      - name: customers
+        columns:
+          - name: id
+            description: primary key for customer.
+            data_tests:
+              - unique
+              - not_null        
+      - name: orders
+        description: Raw orders data
+        columns:
+          - name: id
+            description: primary key for order.
+            data_tests:
+              - unique
+              - not_null   
+        config:
+          freshness:
+            warn_after:
+              count: 12
+              period: hour
+            error_after:
+              count: 1
+              period: day
+          loaded_at_field: _etl_loaded_at
