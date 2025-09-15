@@ -9,7 +9,7 @@ sources:
       - name: customers
         columns:
           - name: id
-            description: primary key
+            description: primary key for customer.
             data_tests:
               - unique
               - not_null        
@@ -17,7 +17,7 @@ sources:
         description: Raw orders data
         columns:
           - name: id
-            description: primary key
+            description: primary key for order.
             data_tests:
               - unique
               - not_null   
